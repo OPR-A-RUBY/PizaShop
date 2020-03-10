@@ -1,5 +1,6 @@
 *.gem
 *.rbc
+pizzashop.db
 /.config
 /coverage/
 /InstalledFiles

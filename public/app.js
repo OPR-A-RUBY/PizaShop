@@ -17,4 +17,6 @@ function something()
 	alert(x);
 
 	// Забываем переменную x
+
+	// enumerate window.localStorage site:stackoverflow.com
 }
