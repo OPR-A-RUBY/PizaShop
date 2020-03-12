@@ -10,13 +10,17 @@
             <img src=" <%= p.path_of_image %> " width=150  />
         </div>
         <div>
-            <%= p.price %>
+            Цена <%= p.price %> рублей.
         </div>
         <div>
-            <%= p.size %>
+            Разиер <%= p.size %> см.
         </div>
         <div>
             <%= p.discription %>
+        </div>
+        <div>
+            <!-- Indicates a successful or positive action -->
+            <button type="button" class="btn btn-sm btn-success"> Добавить к корзину </button>
         </div>
     </div>
     <% end %>
