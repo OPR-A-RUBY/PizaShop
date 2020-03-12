@@ -13,5 +13,5 @@ class CreateProducts < ActiveRecord::Migration[6.0]
   		t.timestamps
   	end
   	# .string .text .integer .float .decimal .datetime .timestamp .time .date .binary .boolean
-  end 
+  end
 end

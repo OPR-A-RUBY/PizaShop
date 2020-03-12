@@ -1,7 +1,6 @@
 class AddPizzas < ActiveRecord::Migration[6.0]
-  
   	def change
-  	
+
   		Product.create({ 
   			:title => 'Сырная', 
   			:discription => ' Лучшая питца для завтрака. Очень сытная и любимая многими гурманами.', 
@@ -67,6 +66,5 @@ class AddPizzas < ActiveRecord::Migration[6.0]
   			:is_best_offer => false, 
   			:path_of_image => '/images/pizza_peperoni.jpg' 
   			})
-
-  	end
+  end
 end

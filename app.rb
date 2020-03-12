@@ -11,6 +11,7 @@ end
 # .string .text .integer .float .decimal .datetime .timestamp .time .date .binary .boolean
 
 get '/' do
+	@product = Product.all 
 	erb :index
 end
 
