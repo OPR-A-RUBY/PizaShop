@@ -23,8 +23,8 @@ function something()
 
 function add_to_cart(id)
 {
-	var key = 'product_' + id;
-	var x = window.localStorage.getItem(key);
-	x = x * 1 + 1;
-	window.localStorage.setItem(key, x);
+	var key = 'product_' + id;                 	// Создаём переменную КЛЮЧЬ с id (product_2)
+	var x = window.localStorage.getItem(key);	// Считываем из хеша value по КЛЮЧУ
+	x = x * 1 + 1;								// Увеличиваем значение на единицу
+	window.localStorage.setItem(key, x);		// Записываем новое значение в хеш
 }
