@@ -21,7 +21,7 @@ function something()
 	// enumerate window.localStorage site:stackoverflow.com
 }
 
-function add_to_cart()
+function add_to_cart(id)
 {
-	alert('Hello from function!');
+	alert('Вы добавили в корзину питцу №' + id);
 }
