@@ -2,30 +2,10 @@
 
 <div class="row">
     <% @product.each do |p| %>
-    <div class="col-md-3"> 
-      proguct 
+    <div class="col-md-4"> 
+        <%= p.title %>
     </div>
     <% end %>
 </div>
 
-<!-- <div class="container">
-	<div class="row">
-		<div class="col-md-3">
-			.col-md-3
-		</div>
-  		<div class="col-md-9">
-  			.col-md-9
-  			<div class="container">
-  				<div class="row show-grid">
-  					::before
-  					<div class="col-md-3">.col-md-3</div>
-  					<div class="col-md-3">.col-md-3</div>
-  					<div class="col-md-3">.col-md-3</div>
-  					::after
-  				</div>
-  			</div>
-  		</div>
-	</div>
-</div>
- -->
 <button class="btn btn-primary" onclick="something()" > Click me! </button>
