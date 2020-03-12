@@ -1,10 +1,10 @@
-<h3>Welcome to Pizza Shop!</h3>
+<h2>Welcome to Pizza Shop!</h2>
 
 <div class="row">
     <% @product.each do |p| %>
     <div class="col-md-3"> 
         <div>
-            <%= p.title %>
+            <h3><%= p.title %></h3>
         </div>
         <div>
             <img src=" <%= p.path_of_image %> " width=200  />

@@ -46,7 +46,7 @@ class AddPizzas < ActiveRecord::Migration[6.0]
   			})
 
   		Product.create({ 
-  			:title => 'Перчик', 
+  			:title => 'Острый перчик', 
   			:discription => ' Острая питца для любителей поострее. Халапенью тому подтверждение.', 
   			:price => 300, 
   			:size => 40, 
