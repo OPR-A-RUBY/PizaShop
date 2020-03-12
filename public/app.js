@@ -20,3 +20,8 @@ function something()
 
 	// enumerate window.localStorage site:stackoverflow.com
 }
+
+function add_to_cart()
+{
+	alert('Hello from function!');
+}
