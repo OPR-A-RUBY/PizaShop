@@ -1,19 +1,20 @@
-<h2>Welcome to Pizza Shop!</h2>
+
+<h2 class="text-center">Welcome to Pizza Shop!</h2>
 
 <div class="row">
     <% @product.each do |p| %>
     <div class="col-md-3"> 
         <div>
-            <h3><%= p.title %></h3>
+            <h3 class="text-center"><%= p.title %></h3>
         </div>
         <div>
             <img src=" <%= p.path_of_image %> " width=200  />
         </div>
         <div>
-            <b>Цена <%= p.price %> рублей.</b>
+            <ins>Размер <%= p.size %> см.</ins>
         </div>
         <div>
-            <ins>Размер <%= p.size %> см.</ins>
+            <h4 class="text-right">Цена <b><%= p.price %></b> рублей.</h4>
         </div>
         <div>
             <em><%= p.discription %></em>
