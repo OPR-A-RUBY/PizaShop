@@ -1,1 +1,1 @@
-# PizaShop
+# PizzaShop
