@@ -38,7 +38,11 @@
 			      <li><a href="/contacts">Contacts</a></li>
 			    </ul>
 			    <ul class="nav navbar-nav navbar-right">
-			  		<li><input type="submit" class="btn btn-primary btn-lg" value="Корзина (...)"></li>
+			    	<form action="/cart" method="post">
+			  		<li>
+			  			<input type="text" name="order"/> 
+			  			<input type="submit" class="btn btn-primary btn-lg" value="Корзина (...)"/></li>
+			  		</form>
 			  	</ul>
 			  </div><!--/.nav-collapse -->
 			  
