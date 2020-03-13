@@ -28,6 +28,7 @@ function add_to_cart(id)
 	x = x * 1 + 1;								// Увеличиваем значение на единицу
 	window.localStorage.setItem(key, x);		// Записываем новое значение в хеш
 
+	// Вывод количества товаров в корзине
 	alert('Количество питц в Вашей корзине ' + cart_get_number_of_item());
 }
 
