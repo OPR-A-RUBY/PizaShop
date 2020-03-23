@@ -48,14 +48,14 @@
 			  
 			</nav>
 			<div>
-			      <%if @error && @error.length > 0 then %>
-			          <div class="alert alert-danger"><%=@error%></div>
-			      <% end %>
+			      	<%if @error && @error.length > 0 then %>
+			          	<div class="alert alert-danger"><%=@error%></div>
+			      	<% end %>
 <!-- ######################### -->
 <!-- # НАЧАЛО БЛОКА ДОБАВКИ  # -->
 <!-- ######################### -->
 
-<%= yield %>
+					<%= yield %>
 
 <!-- ######################### -->
 <!-- # КОНЕЦ БЛОКА ДОБАВКИ   # -->
