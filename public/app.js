@@ -30,7 +30,14 @@ function add_to_cart(id)
 
 	// Вывод количества товаров в корзине
 	// alert('Количество питц в Вашей корзине ' + cart_get_number_of_item());
-	update_orders_input(); // обновление строки со списком заказанных товаров.
+	update_orders_input();  // обновление строки со списком заказанных товаров.
+	update_orders_button(); // обновление количества на кнопке "Корзина"
+}
+
+function update_orders_button()
+{
+	var text = 'Корзина (' + cart_get_number_of_item() + ')';
+	$('#orders_button').val(text);
 }
 
 function update_orders_input()
