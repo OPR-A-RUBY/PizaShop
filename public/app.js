@@ -37,13 +37,13 @@ function cart_get_number_of_item()
 	// Команды скрипта работают в консоле браузера, т.е. их можно там оттестить.
 	var cnt = 0;
 
-	for ( i = 0;  i < window.localStorage.length; i++)
+	for ( i = 0;  i < window.localStorage.length; i++) 
 	{
 		// Получаем ключ текущего элемента в хеше (записываем его в key
 		var key = window.localStorage.key(i);
 
 		// Получаем значение из хеша по ключу (записываем это значение в value)
-		var value = window.localStorage.getItem(key);
+		var value = window.localStorage.getItem(key);  // Типа value = hh[key]
 
 		// Если ключ key начинается с 'product_' или дословно: если позиция (index Of) с которой
 		// начинается строка 'product_' - это нулевая позикия в текущем ключе key, то ...
@@ -54,4 +54,28 @@ function cart_get_number_of_item()
 		} 		
 	}
 	return cnt;
+}
+
+function cart_get_orders()
+{
+	// Команды скрипта работают в консоле браузера, т.е. их можно там оттестить.
+	var orders = '';
+
+	for ( i = 0;  i < window.localStorage.length; i++) 
+	{
+		// Получаем ключ текущего элемента в хеше (записываем его в key
+		var key = window.localStorage.key(i);
+
+		// Получаем значение из хеша по ключу (записываем это значение в value)
+		var value = window.localStorage.getItem(key);  // Типа value = hh[key]
+
+		// Если ключ key начинается с 'product_' или дословно: если позиция (index Of) с которой
+		// начинается строка 'product_' - это нулевая позикия в текущем ключе key, то ...
+		if(key.indexOf('product_') == 0)
+		{
+			//cnt++;  // ... увеличиваем cnt на 1  (плюс один вид товара)
+			orders = orders + key + '=' + value + ',';
+		} 		
+	}
+	return orders;
 }
