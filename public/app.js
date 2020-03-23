@@ -29,7 +29,19 @@ function add_to_cart(id)
 	window.localStorage.setItem(key, x);		// Записываем новое значение в хеш
 
 	// Вывод количества товаров в корзине
-	alert('Количество питц в Вашей корзине ' + cart_get_number_of_item());
+	// alert('Количество питц в Вашей корзине ' + cart_get_number_of_item());
+	update_orders_input(); // обновление строки со списком заказанных товаров.
+}
+
+function update_orders_input()
+{   
+	// Здесь мы хотим обновлять список заказанных товаров ( типа 'Product_1=2,Product_4=1,')
+	var orders = cart_get_orders(); // Получаем строку с заказанными товарами из хеша
+	// на стороне пользователя localStorage с помощью функции ниже.
+
+	// Далее мы обращаемся к полю с id="orders_input" для вывода в него переменной orders
+	// т.е. списка заказанного. Знак # указывает, что мы обращаемся к полю по id
+	$('#orders_input').val(orders);
 }
 
 function cart_get_number_of_item()
