@@ -1,22 +1,27 @@
 <h2>Ваша корзина</h2>
 <div>
 <table class="table table-striped">
+	<!-- Выводим шапку таблицы -->
   	<div class="row">
-  		<div class="col-md-1">Num</div>
-  		<div class="col-md-1">Artikul</div>
-  		<div class="col-md-4">Discription</div>
-  		<div class="col-md-2">Price</div>
-  		<div class="col-md-1">order</div>
-  		<div class="col-md-2">Total</div>
+  		<div class="col-md-1">№ п.п.</div>			<!-- Номер по порядку -->
+  		<div class="col-md-1">Артикул</div>			<!-- ID -->
+  		<div class="col-md-4">Наименование</div>	<!-- Название -->
+  		<div class="col-md-2">Цена</div>			<!-- Цена за единицу -->
+  		<div class="col-md-1">Количество</div>		<!-- Количество -->
+  		<div class="col-md-2">СУММА</div>			<!-- Сумма -->
   	</div>
-  	<% i = 0 %>
-  	<% total = 0 %>
-  	<% @hh.each do |key, value| %>
+  	<% i = 0 %>		<!-- Переменная для подсчёта количества наименований товаров -->
+  	<% total = 0 %>	<!-- Переменная для подсчёта суммы чека (всех товаров в корзине) -->
+  	<% @hh.each do |key, value| %>	<!-- Перебираем все товары в корзине (хеше) -->
   		<% i += 1 %>
-  		<% @product.each do |p| %>
-  			<% @pp = p if p.id == key.to_i %>
+  		<!-- Отыскиваем в базе продуктов данные по выбранному продукту -->
+  		<% @product.each do |p| %> 	<!-- перебираем всю базу продуктов -->
+  			<% @pp = p if p.id == key.to_i %> <!-- присваиваем значение записи переменной @pp если id записи в базе одинаковый с id выбранны из корзины -->
   		<% end %>
-  		<% t = @pp.price.to_i * value %>
+
+  		<% t = @pp.price.to_i * value %> <!-- Расчёт стоимости позиции в чеке -->
+
+  		<!-- Вывод одной строки по товару в чеке (в таблицу) -->
 	  	<div class="row">
 	  		<div class="col-md-1"><%= i %></div>
 	  		<div class="col-md-1"><%= @pp.id %></div>
@@ -25,8 +30,9 @@
 	  		<div class="col-md-1"><%= value %></div>
 	  		<div class="col-md-2"><%= t %></div>
 	  	</div>
-	  	<% total = total + t %>	
+	  	<% total = total + t %>	<!-- Добавление к сумме чека суммы по теущему товару -->
   	<% end %>
+  	<!-- Выводим подвал таблицы с итогами -->
   	<div class="row">
 	  		<div class="col-md-9"></div>
 	  		<div class="col-md-2"><%= total %></div>
