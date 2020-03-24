@@ -1,15 +1,17 @@
 <h2>Ваша корзина</h2>
 <div>
 <table class="table table-striped">
+
 	<!-- Выводим шапку таблицы -->
-  	<div class="row">
-  		<div class="col-md-1">№ п.п.</div>			<!-- Номер по порядку -->
-  		<div class="col-md-1">Артикул</div>			<!-- ID -->
-  		<div class="col-md-4">Наименование</div>	<!-- Название -->
-  		<div class="col-md-2">Цена</div>			<!-- Цена за единицу -->
-  		<div class="col-md-1">Количество</div>		<!-- Количество -->
-  		<div class="col-md-2">СУММА</div>			<!-- Сумма -->
-  	</div>
+  	<tr class="row">
+  		<th class="col-md-1">№ п.п.</th>			<!-- Номер по порядку -->
+  		<th class="col-md-1">Артикул</th>			<!-- ID -->
+  		<th class="col-md-5">Наименование</th>	<!-- Название -->
+  		<th class="col-md-2">Цена</th>			<!-- Цена за единицу -->
+  		<th class="col-md-1">Количество</th>		<!-- Количество -->
+  		<th class="col-md-2">СУММА</th>			<!-- Сумма -->
+  	</tr>
+<tbody>  	
   	<% i = 0 %>		<!-- Переменная для подсчёта количества наименований товаров -->
   	<% k = 0 %>		<!-- Переменная для подсчёта количества всех товаров -->
   	<% total = 0 %>	<!-- Переменная для подсчёта суммы чека (всех товаров в корзине) -->
@@ -24,22 +26,29 @@
   		<% t = @pp.price.to_i * value %> <!-- Расчёт стоимости за ТЕКУЩИЙ вид товара в чеке -->
 
   		<!-- Вывод одной строки по ТЕКУЩЕМУ товару в чеке (в таблицу) -->
-	  	<div class="row">
-	  		<div class="col-md-1"><%= i %></div>
-	  		<div class="col-md-1"><%= @pp.id %></div>
-	  		<div class="col-md-4"><%= @pp.title %></div>
-	  		<div class="col-md-2"><%= @pp.price %></div>
-	  		<div class="col-md-1"><%= value %></div>
-	  		<div class="col-md-2"><%= t %></div>
-	  	</div>
+	
+	  	<tr class="row">
+	  		<td class="col-md-1"><%= i %></td>
+	  		<td class="col-md-1"><%= @pp.id %></td>
+	  		<td class="col-md-5"><%= @pp.title %></td>
+	  		<td class="col-md-2"><%= @pp.price %></td>
+	  		<td class="col-md-1"><%= value %></td>
+	  		<td class="col-md-2"><%= t %></td>
+	  	</tr>
+	
+
 	  	<% total = total + t %>	<!-- Добавление к сумме чека суммы по ТЕКУЩЕМУ товару -->
 	  	<% k = k + value %>	<!-- Добавление к общему количеству товаров количества по ТЕКУЩЕМУ виду товара  -->
   	<% end %>
-  	<!-- Выводим подвал таблицы с итогами -->
-  	<div class="row">
-	  		<div class="col-md-8"></div>
-	  		<div class="col-md-1"><%= k %></div>
-	  		<div class="col-md-2"><%= total %></div>
-	  	</div>
+  		<!-- Выводим подвал таблицы с итогами -->
+  		<tr class="row">
+	  		<td class="col-md-1"></td>
+	  		<td class="col-md-1"></td>
+	  		<td class="col-md-5"></td>
+	  		<td class="col-md-2"></td>
+	  		<td class="col-md-1"><%= k %></td>
+	  		<td class="col-md-2"><%= total %></td>
+	  	</tr>
+</tbody>	  	
 </table>
 </div>
