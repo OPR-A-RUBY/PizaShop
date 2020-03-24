@@ -20,5 +20,36 @@ get '/about' do
 end
 
 post '/cart' do
-	erb 'Hello!'
+	@order = params[:order]
+	puts @order
+	@hh = {}
+	n = ""
+	key = ""
+	value = ""
+	@order.each_char do |item|
+		if item == ","
+			# Делим переменную на key и value
+			puts n
+			i = 0
+			s = n.size
+			n.each_char do |item_i|
+				i = i + 1
+				if item_i == "="
+					key = n[0,i-1]
+					value = n[i,s]
+					puts key
+					puts value
+					puts s
+				end		
+			end
+			# Пишем в хеш данные по товару
+			@hh[key] = value.to_i
+			# Обнуляем переменные для нового товара
+			n = ""
+		else
+			n = n + item
+		end				
+	end
+	puts @hh
+	erb :cart
 end
