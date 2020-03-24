@@ -10,21 +10,26 @@
   		<div class="col-md-2">Total</div>
   	</div>
   	<% i = 0 %>
+  	<% total = 0 %>
   	<% @hh.each do |key, value| %>
   		<% i += 1 %>
   		<% @product.each do |p| %>
   			<% @pp = p if p.id == key.to_i %>
   		<% end %>
+  		<% t = @pp.price.to_i * value %>
 	  	<div class="row">
 	  		<div class="col-md-1"><%= i %></div>
 	  		<div class="col-md-1"><%= @pp.id %></div>
 	  		<div class="col-md-4"><%= @pp.title %></div>
 	  		<div class="col-md-2"><%= @pp.price %></div>
 	  		<div class="col-md-1"><%= value %></div>
-	  		<div class="col-md-2"><%= @pp.price.to_i * value %></div>
-	  	</div>	
+	  		<div class="col-md-2"><%= t %></div>
+	  	</div>
+	  	<% total = total + t %>	
   	<% end %>
-  	<p>Opr_test</p>
-  	<%= @product %>
+  	<div class="row">
+	  		<div class="col-md-9"></div>
+	  		<div class="col-md-2"><%= total %></div>
+	  	</div>
 </table>
 </div>
