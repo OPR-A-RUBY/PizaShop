@@ -1,4 +1,30 @@
 <h2>Ваша корзина</h2>
 <div>
-	тест
+<table class="table table-striped">
+  	<div class="row">
+  		<div class="col-md-1">Num</div>
+  		<div class="col-md-1">Artikul</div>
+  		<div class="col-md-4">Discription</div>
+  		<div class="col-md-2">Price</div>
+  		<div class="col-md-1">order</div>
+  		<div class="col-md-2">Total</div>
+  	</div>
+  	<% i = 0 %>
+  	<% @hh.each do |key, value| %>
+  		<% i += 1 %>
+  		<% @product.each do |p| %>
+  			<% @pp = p if p.id == key.to_i %>
+  		<% end %>
+	  	<div class="row">
+	  		<div class="col-md-1"><%= i %></div>
+	  		<div class="col-md-1"><%= @pp.id %></div>
+	  		<div class="col-md-4"><%= @pp.title %></div>
+	  		<div class="col-md-2"><%= @pp.price %></div>
+	  		<div class="col-md-1"><%= value %></div>
+	  		<div class="col-md-2"><%= @pp.price.to_i * value %></div>
+	  	</div>	
+  	<% end %>
+  	<p>Opr_test</p>
+  	<%= @product %>
+</table>
 </div>

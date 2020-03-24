@@ -21,6 +21,7 @@ end
 
 post '/cart' do
 	@order = params[:order]
+	@product = Product.all
 	puts @order
 	@hh = {}
 	n = ""
@@ -35,11 +36,11 @@ post '/cart' do
 			n.each_char do |item_i|
 				i = i + 1
 				if item_i == "="
-					key = n[0,i-1]
+					key = n[8,i-1-8]
 					value = n[i,s]
+					i = 0
 					puts key
 					puts value
-					puts s
 				end		
 			end
 			# Пишем в хеш данные по товару
