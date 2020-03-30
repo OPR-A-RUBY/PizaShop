@@ -11,37 +11,55 @@ class Product < ActiveRecord::Base
 end
 # .string .text .integer .float .decimal .datetime .timestamp .time .date .binary .boolean
 
-get '/' do
+get '/' do	# -----------------------------------------------------------------------
     @product = Product.all 
     erb :index
 end
 
-get '/about' do
+get '/about' do	# -------------------------------------------------------------------
     erb :about
 end
 
-post '/cart' do
+post '/cart' do	# -------------------------------------------------------------------
 
-    @product = Product.all
+    @product = Product.all          # Перенести db в переменную для страницы /cart
+    # эта переменная понадобиться для создания таблицы заказанного товара с расчётом
+    # стоимости всего чека и каждого товара через стоимость из db.
 
     @order = params[:order]
-    puts @order
+    puts @order						### FOR DEBUGING
     @hh = {}
     
     arr_position = @order.split(',')        # Расщепляет строку на массив 
     
     arr_position.each do |item|
     
-    	arr_ = item.split('=')        # Расщепляет элемент на массив (имя, колич-во)
+    	arr_ = item.split('=')  # Расщепляет элемент на массив (имя, колич-во)
 
-    	if arr_.size != 2
-            puts "Error" 
-        else    
-            # Пишем в хеш данные по товару
-            key = arr_[0].split('_')[1]
-            value = arr_[1].to_i
-            puts "#{key} = #{value}"
-            @hh[key] = value
+    	if arr_.size != 2		# Если разменр этого массива не равен 2 (имя,кол-во)
+            puts "Error" 		# ... то это ошибка. так не должно быть! и ...
+            # ... такой товар не подлежит дальнейшему расчёту, т.е. идём к следующему.
+
+        else # А если это не так, т.е. массив содержит два элемента (имя и кол-во),
+        	# ... то ПИШЕМ в ХЕШ данные по товару, но есть тонкости:  
+            # Нужно подготовить данные для работы с БАЗОЙ ДАННЫХ. Для этого:
+
+            # Сначала получим id - (код товара)
+            #
+            #   /- Получим код товара, для этого:
+            #  !     /- возьмём нулевой элемент массива arr_  (это 'produkt_4')
+            #  !    !      /- разделяем его на массив по знаку '_' ([produkt],[4])
+            #  !    !     !          ! - забираем элемент (1) из полученного массива 
+            key = arr_[0].split('_')[1]			# - (в данном случае это [4])
+
+            # Далее, получим количество товара, находящееся на месте 1-го эл-та arr_
+            value = arr_[1].to_i	# с преобразованием к типу integr
+
+            puts "#{key} = #{value}" ### FOR DEBUGING
+
+            @hh[key] = value 	# Теперб ЗАНОСИМ данные по товару в ХЕШ.
+            # ... ключём является id (см. выше) хранится в key
+            # ... а значение - это количество товара, которое в переменной value
         end             
     end
 
@@ -49,39 +67,3 @@ post '/cart' do
     @product = Product.all
     erb :cart
 end
-
-# post '/cart' do  				# Старый вариает кода
-#     @order = params[:order]
-#     
-#     puts @order
-#     @hh = {}
-#     n = ""
-#     key = ""
-#     value = ""
-#     @order.each_char do |item|
-#         if item == ","
-#             # Делим переменную на key и value
-#             puts n
-#             i = 0
-#             s = n.size
-#             n.each_char do |item_i|
-#                 i = i + 1
-#                 if item_i == "="
-#                     key = n[8,i-1-8]
-#                     value = n[i,s]
-#                     i = 0
-#                     puts key
-#                     puts value
-#                 end     
-#             end
-#             # Пишем в хеш данные по товару
-#             @hh[key] = value.to_i
-#             # Обнуляем переменные для нового товара
-#             n = ""
-#         else
-#             n = n + item
-#         end             
-#     end
-#     puts @hh
-#     erb :cart
-# end
