@@ -30,7 +30,7 @@ post '/cart' do	# --------------------------------------------------------------
     puts @order						### FOR DEBUGING
     @hh = {}
     
-    arr_position = @order.split(',')        # Расщепляет строку на массив 
+    arr_position = @order.split(',')        # Расщепляет строку на массив товаров
     
     arr_position.each do |item|
     
