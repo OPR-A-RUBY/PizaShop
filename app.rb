@@ -70,9 +70,9 @@ end
 
 post '/cart' do
 
-	orders_line = params[:order]
+	@orders_line = params[:order]
 
-	@items = parse_orders_input orders_line
+	@items = parse_orders_input @orders_line
 
 	@items.each do |item|
 		# id, cnt
@@ -84,7 +84,7 @@ end
 
 def parse_orders_input orders_line
 
-    s1 = orders_line.split(',')
+    s1 = @orders_line.split(',')
 
     arr = []
 
@@ -106,3 +106,5 @@ def parse_orders_input orders_line
     return arr
 
 end
+
+# /place_order

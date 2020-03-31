@@ -35,4 +35,27 @@
         </tr>
         
       </tbody>
-    </table>
+</table>
+
+<form action="/place_order" role="form" method="POST">
+
+ <input name="order[cl_string]" type="hidden" value="<%= @orders_line %>" /> 
+
+ <div class="form-group">
+    <label>Введите Ваше имя</label>
+    <input name="order[cl_name]" type="text" class="form-control" placeholder="Ваше имя" >
+  </div>
+
+  <div class="form-group">
+    <label>Введите Ваш телефон</label>
+    <input name="order[cl_phone]" type="text" class="form-control" placeholder="987-654-32-10" >
+  </div>
+
+  <div class="form-group">
+    <label>Введите адрес доставки</label>
+    <textarea name="order[cl_adress]" class="form-control" placeholder="Улица, дом, квартира" ></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-success btn-lg"><b> Подтвердить заказ </b></button>
+
+</form>
