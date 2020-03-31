@@ -9,6 +9,9 @@ set :database, 'sqlite3:pizzashop.db'
 
 class Product < ActiveRecord::Base
 end
+
+class Order < ActiveRecord::Base
+end
 # .string .text .integer .float .decimal .datetime .timestamp .time .date .binary .boolean
 
 get '/' do	# -----------------------------------------------------------------------

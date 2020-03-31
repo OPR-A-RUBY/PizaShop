@@ -31,7 +31,7 @@ class AddPizzas < ActiveRecord::Migration[6.0]
   			:is_spicy => false,	
   			:is_veg => true, 
   			:is_best_offer => false, 
-  			:path_of_image => '/images/hawaiian.jpg' 
+  			:path_of_image => '/images/pizza_hawaiian.jpg' 
   			})
 
   		Product.create({ 
