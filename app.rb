@@ -20,7 +20,7 @@ get '/about' do	# --------------------------------------------------------------
     erb :about
 end
 
-post '/cart' do	# -------------------------------------------------------------------
+post '/cart_me' do	# ---------------------------------------------------------------
 
     @product = Product.all          # Перенести db в переменную для страницы /cart
     # эта переменная понадобиться для создания таблицы заказанного товара с расчётом
@@ -30,7 +30,7 @@ post '/cart' do	# --------------------------------------------------------------
     puts @order						### FOR DEBUGING
     @hh = {}
     
-    arr_position = @order.split(',')        # Расщепляет строку на массив товаров
+    arr_position = @order.split(',')        # Расщепляет строку на массив товаров 
     
     arr_position.each do |item|
     
@@ -66,4 +66,43 @@ post '/cart' do	# --------------------------------------------------------------
     puts @hh
     @product = Product.all
     erb :cart
+end
+
+post '/cart' do
+
+	orders_line = params[:order]
+
+	@items = parse_orders_input orders_line
+
+	@items.each do |item|
+		# id, cnt
+		item[0] = Product.find(item[0])
+	end
+
+	erb :cart
+end
+
+def parse_orders_input orders_line
+
+    s1 = orders_line.split(',')
+
+    arr = []
+
+    s1.each do |x|
+
+        s2 = x.split('=')
+
+        s3 = s2[0].split('_')
+
+        id  = s3[1]
+        cnt = s2[1]
+
+        sub_arr = [id, cnt]
+
+        arr.push sub_arr
+        
+    end
+    
+    return arr
+
 end
