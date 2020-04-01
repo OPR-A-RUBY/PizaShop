@@ -107,6 +107,8 @@ function cancel_order()
   update_orders_input();  // обновление строки со списком заказанных товаров.
   update_orders_button(); // обновление количества на кнопке "Корзина"
 
+  $('#cart').text(" Ваша корзина теперь пустая! ");
+
   return false;
 }
 

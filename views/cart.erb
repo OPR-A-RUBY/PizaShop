@@ -1,64 +1,73 @@
 <h2>Ваша корзина</h2>
 
-<%= @items.inspect %>
+<div id="cart">
 
-<table class="table table-striped">
+    <table class="table table-striped">
+
       <thead>
+        
         <tr>
           <th>#</th>
           <th>Name</th>
           <th>Price</th>
           <th>Qty</th>
         </tr>
+        
       </thead>
+
       <tbody>
 
-      <% total_money = 0 %>
-      <% total_qty = 0 %>
-      <% i = 0 %>
-      <% @items.each do |item| %>
+        <% total_money = 0 %>
+        <% total_qty = 0 %>
+        <% i = 0 %>
+        <% @items.each do |item| %>
         <% i += 1 %>  
+
         <tr>
           <th scope="row"><%= i %></th>
           <td><%= item[0].title %></td>
           <td><%= item[0].price %></td>
           <td><%= item[1] %></td>
         </tr>
+
         <% total_money += item[0].price * item[1].to_i %>
         <% total_qty += item[1].to_i %>
-      <% end %>  
+        <% end %>  
+
         <tr>
           <th></th>
           <td><b>TOTAL : </b></td>
           <td><b><%= total_money %></b></td>
           <td><b><%= total_qty %></b></td>
         </tr>
-        
+
       </tbody>
-</table>
+      
+    </table>
 
-<form action="/place_order" role="form" method="POST">
+    <form action="/place_order" role="form" method="POST">
 
- <input name="order[cl_string]" type="hidden" value="<%= @orders_line %>" /> 
+      <input name="order[cl_string]" type="hidden" value="<%= @orders_line %>" /> 
 
- <div class="form-group">
-    <label>Введите Ваше имя</label>
-    <input name="order[cl_name]" type="text" class="form-control" placeholder="Ваше имя" >
-  </div>
+      <div class="form-group">
+        <label>Введите Ваше имя</label>
+        <input name="order[cl_name]" type="text" class="form-control" placeholder="Ваше имя" >
+      </div>
 
-  <div class="form-group">
-    <label>Введите Ваш телефон</label>
-    <input name="order[cl_phone]" type="text" class="form-control" placeholder="987-654-32-10" >
-  </div>
+      <div class="form-group">
+        <label>Введите Ваш телефон</label>
+        <input name="order[cl_phone]" type="text" class="form-control" placeholder="987-654-32-10" >
+      </div>
 
-  <div class="form-group">
-    <label>Введите адрес доставки</label>
-    <textarea name="order[cl_adress]" class="form-control" placeholder="Улица, дом, квартира" ></textarea>
-  </div>
+      <div class="form-group">
+        <label>Введите адрес доставки</label>
+        <textarea name="order[cl_adress]" class="form-control" placeholder="Улица, дом, квартира" ></textarea>
+      </div>
 
-  <button type="submit" class="btn btn-success btn-lg"><b> Подтвердить заказ </b></button>
-  
-  <button class="btn btn-danger btn-lg" onclick="return cancel_order()"><b> Очистить корзину </b></button>
+      <button type="submit" class="btn btn-success btn-lg"><b> Подтвердить заказ </b></button>
+    
+      <button class="btn btn-danger btn-lg" onclick="return cancel_order()"><b> Очистить корзину </b></button>
 
-  <!-- Если добавить в кнопку onclick="alert('aaa');return false" то кнопка не будет отправлять форму, в которой она находится. Так можно сделать кнопку внутри фрмы, но не отправляющую данные на сервер-->
-</form>
+      <!-- Если добавить в кнопку onclick="alert('aaa');return false" то кнопка не будет отправлять форму, в которой она  находится. Так можно сделать кнопку внутри фрмы, но не отправляющую данные на сервер-->
+    </form>
+</div>
