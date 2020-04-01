@@ -79,15 +79,15 @@ end
 
 post '/cart' do
 
-  @orders_line = params[:order]
+  @orders_line = params[:order]   # присваиваем ХЕШу все параметры, переданные через POST 
 
-  @items = parse_orders_input @orders_line
+  @items = parse_orders_input @orders_line  # преобразовываем строку в массив (id, cnt)
 
-  if @items.length == 0
-    return erb 'You Cart is Empty!'
+  if @items.length == 0         # Выводим сообщение, что корзина пустая
+    return erb :cart_is_empty
   end
 
-  @items.each do |item|
+  @items.each do |item|         # Выводим список продуктов в корзине
     # id, cnt
     item[0] = Product.find(item[0])
   end
@@ -95,28 +95,32 @@ post '/cart' do
   erb :cart
 end
 
-def parse_orders_input orders_line
+def parse_orders_input orders_line  # метод преобразовывает строку @ordre_line в массив (id, cnt)
+  #                                   'product_3=5,product_7=8,' => [ ['3', '5'], ['7', '8'] ]
 
-  s1 = @orders_line.split(',')
+  arr = []                      # готовим место для итогового массива
 
-  arr = []
+  s1 = @orders_line.split(',')  # поделить на массив (считать символом деления ',' (запятую))
+  #                                   'product_3=5,product_7=8,' => ['product_3=5', 'product_7=8']
+  
+  s1.each do |x|                # перебираем все элементы (x) массива s1 
 
-  s1.each do |x|
+    s2 = x.split('=')               # поделить элемент массива на подмассив (разделитель '=')
+   #                                   'product_3=5' => ['product_3', '5']  
+  
+    s3 = s2[0].split('_')           # нулевой элемент подмассива поделить на под-подмассив ('_')
+   #                                   'product_3'  => ['product', '3']
+   
+    id  = s3[1]                 # id - это 1-ый элемент под-подмассива   '3'
+    cnt = s2[1]                 # cnt - это 1-ый элемент подмассива      '5'
 
-    s2 = x.split('=')
+    sub_arr = [id, cnt]         # получаем ['3', '5']
 
-    s3 = s2[0].split('_')
+    arr.push sub_arr            # затасливаем каждую пару ['id', 'cnt'] как элемент в массив arr 
 
-    id  = s3[1]
-    cnt = s2[1]
+  end                           # переходим к следующему элементу массива s1
 
-    sub_arr = [id, cnt]
-
-    arr.push sub_arr
-
-  end
-
-  return arr
+  return arr              # возвращаем из метода полученный массив.       
 
 end
 
@@ -124,10 +128,10 @@ post '/place_order' do
 
   @ooo = Order.new params[:order]
 
-  if @ooo.save            # Записать данные в таблицу БД
+  # Записать данные в таблицу БД
+  if @ooo.save                 # Здесь происходит валидация данных настройка которых
+   #                              происходит при описании class Client (см. выше)
 
-      # Здесь происходит валидация данных
-      # настройка которых происходит при описании class Client (см. выше)
     erb :place_order
 
   else
