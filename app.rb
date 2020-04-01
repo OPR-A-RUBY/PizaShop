@@ -83,6 +83,10 @@ post '/cart' do
 
   @items = parse_orders_input @orders_line
 
+  if @items.length == 0
+    return erb 'You Cart is Empty!'
+  end
+
   @items.each do |item|
     # id, cnt
     item[0] = Product.find(item[0])
