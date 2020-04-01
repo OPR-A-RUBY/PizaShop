@@ -129,7 +129,7 @@ post '/place_order' do
   else
 
     @error = @ooo.errors.full_messages.first
-    erb :place_order
+    erb "ОШИБКА"
   
   end 
 
