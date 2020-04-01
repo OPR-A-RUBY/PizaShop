@@ -145,5 +145,5 @@ end
 
 get '/admin' do
   @orders_db = Order.all 
-  erb "Hello World"
+  erb :admin
 end

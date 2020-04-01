@@ -1,0 +1,33 @@
+<h3>Все заказы</h3>
+
+<table class="table table-striped">
+
+    <thead>
+      
+      <tr>
+        <th>ID</th>
+        <th>Имя</th>
+        <th>Телефон</th>
+        <th>Адрес</th>
+        <th>Заказано</th>
+      </tr>
+      
+    </thead>
+
+    <tbody>
+
+      <% @orders_db.each do |item| %>
+
+        <tr>
+          <th scope="row"><%= item[:id] %></th>
+          <td><%= item[:cl_name] %></td>
+          <td><%= item[:cl_phone] %></td>
+          <td><%= item[:cl_adress] %></td>
+          <td><%= item[:cl_string] %></td>
+        </tr>
+      
+      <% end %>  
+
+    </tbody>
+  
+</table>
