@@ -101,7 +101,12 @@ function cart_get_orders()
 
 function cancel_order()
 {
-  alert('aaa');
+  // Очистка корзины когда ЗАКАЗ ОТМЕНЁН пользователем  (см. place_order.erb - другая причина очистки)
+  window.localStorage.clear();
+
+  update_orders_input();  // обновление строки со списком заказанных товаров.
+  update_orders_button(); // обновление количества на кнопке "Корзина"
+
   return false;
 }
 
