@@ -142,3 +142,8 @@ post '/place_order' do
   end 
 
 end
+
+get '/admin' do
+  @orders_db = Order.all 
+  erb "Hello World"
+end
