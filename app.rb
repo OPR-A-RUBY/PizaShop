@@ -11,7 +11,11 @@ class Product < ActiveRecord::Base
 end
 
 class Order < ActiveRecord::Base
+  validates :cl_name, presence: true, length: { minimum: 3 } 
+  validates :cl_phone, presence: true, length: { minimum: 5 }  
+  validates :cl_adress, presence: true 
 end
+
 # .string .text .integer .float .decimal .datetime .timestamp .time .date .binary .boolean
 
 get '/' do  # -----------------------------------------------------------------------
@@ -114,8 +118,19 @@ end
 
 post '/place_order' do
 
-  @order_cart_line = params[:order]
+  @ooo = Order.new params[:order]
 
-  erb :place_order
+  if @ooo.save            # Записать данные в таблицу БД
+
+      # Здесь происходит валидация данных
+      # настройка которых происходит при описании class Client (см. выше)
+    erb :place_order
+
+  else
+
+    @error = @c.errors.full_messages.first
+    erb :cart
   
+  end 
+
 end
