@@ -13,7 +13,7 @@ end
 class Order < ActiveRecord::Base
   validates :cl_name, presence: true, length: { minimum: 3 } 
   validates :cl_phone, presence: true, length: { minimum: 5 }  
-  validates :cl_adress, presence: true 
+  validates :cl_adress, presence: true, length: { minimum: 5 }  
 end
 
 # .string .text .integer .float .decimal .datetime .timestamp .time .date .binary .boolean
@@ -128,8 +128,8 @@ post '/place_order' do
 
   else
 
-    @error = @c.errors.full_messages.first
-    erb :cart
+    @error = @ooo.errors.full_messages.first
+    erb :place_order
   
   end 
 
