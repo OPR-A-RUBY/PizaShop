@@ -1,5 +1,6 @@
 
 function something()
+  // Данная функци приводится здесь для понятия принципов взаимодействия JawaScript и localStorage
 {
   // При каждом обращении к something() создаётся новая переменная x
   //  Эта переменная доступна только внутри этого метода
@@ -7,7 +8,7 @@ function something()
   // Получаем значение  по ключу 'bbb' из хеша localStorage и записываем её в переменную x 
   var x = window.localStorage.getItem('bbb'); // x = hh['bbb']
 
-  // Увеличиваем переменную x на 1. Без умножения получается добавление 1 к строке x 
+  // Увеличиваем переменную x на 1. Без умножения получается добавление 1 к строке x ( 1+1=11 )
   x = x * 1 + 1;    // x += 1
 
   // Отправить значение x в хеш localStorege с ключём 'bbb'  {'bbb' => x}
@@ -34,7 +35,7 @@ function add_to_cart(id)
   update_orders_button(); // обновление количества на кнопке "Корзина"
 }
 
-function update_orders_button()
+function update_orders_button()  // обновление количества на кнопке "Корзина"
 {
   var text = 'Корзина (' + cart_get_number_of_item() + ')';
   $('#orders_button').val(text);
