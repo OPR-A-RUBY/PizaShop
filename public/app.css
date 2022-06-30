@@ -8,3 +8,17 @@
   padding-left: 20px;
   text-decoration: underline;
 }
+.brd-3 {
+  border: 3px double #000;
+  background: #ffd;
+  padding: 5px;
+}
+.brd-2 {
+  border: 1px double #464;
+  background: #fed;
+  padding: 10px;
+}
+.brd-1 {
+  border: 1px double #888;
+  background: #fed;
+}

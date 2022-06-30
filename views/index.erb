@@ -1,27 +1,24 @@
 
 <h2 class="text-center">Welcome to Pizza Shop!</h2>
 
-<div class="row">
+<div class="row brd-3">
     <% @product.each do |p| %>
-    <div class="col-md-4 col-sm-4">   
+    <div class="col-md-4 brd-1 text-center">
         <div>
             <h3 class="text-center"><%= p.title %></h3>
         </div>
         <div>
-            <img src=" <%= p.path_of_image %> " width=200  />
+            <img class="brd-2" src=" <%= p.path_of_image %> " width="200" height="200"/>
         </div>
         <div>
-            <ins>Размер <%= p.size %> см.</ins>
+            <ins class="text-center">Размер <%= p.size %> см.</ins>
         </div>
         <div>
-            <h4 class="text-right">Цена <b><%= p.price %></b> рублей.</h4>
-        </div>
-        <div>
-            <em><%= p.discription %></em>
-        </div>
-        <div>
-            <!-- Indicates a successful or positive action -->
+            <h4>Цена <b><%= p.price %></b> рублей.</h4>
             <button type="button" class="btn btn-sm btn-success" onclick="add_to_cart(<%= p.id %>)"> Добавить в корзину </button>
+        </div>
+        <div class="text-left"  width="200" height="200">
+            <em><%= p.discription %></em>
         </div>
     </div>
     <% end %>
